@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin("https://localhost:3000")
+//@CrossOrigin("https://localhost:3000")
 public class RawMaterialsController {
     private RawMaterialsRepository rawMaterialsRepository;
 //    private RawMaterialsService rawMaterialsService;

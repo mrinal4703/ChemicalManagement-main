@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin("https://localhost:3000")
+//@CrossOrigin("https://localhost:3000")
 public class DeliveryController {
     private DeliveryRepository deliveryRepository;
 

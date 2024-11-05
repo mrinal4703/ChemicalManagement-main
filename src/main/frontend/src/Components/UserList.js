@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'; // Import Axios library
+import axios from 'axios';
+import {username} from "../data/constants"; // Import Axios library
 
 const UserList = () => {
     const [users, setUsers] = useState([]);
@@ -11,7 +12,7 @@ const UserList = () => {
 
     const fetchData = async (api) => {
         try {
-            const response = await axios.get(`http://localhost:8085/${api}`); // Use Axios's get method
+            const response = await axios.get(`http://${username}:8085/${api}`); // Use Axios's get method
             setUsers(response.data);
         } catch (error) {
             console.error('Error fetching data:', error);

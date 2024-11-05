@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin("https://localhost:3000")
+//@CrossOrigin("https://localhost:3000")
 public class ChemicalReportController {
 
     private final ChemicalReportRepository chemicalReportRepository;

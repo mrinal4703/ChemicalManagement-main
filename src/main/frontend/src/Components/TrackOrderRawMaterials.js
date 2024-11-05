@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Modal from "react-modal";
 import {IoClose} from "react-icons/io5";
 import axios from "axios";
-import {email, email_session, isLoggedIn, isLoggedIn_session, rank, rank_session} from "../data/constants";
+import {email, email_session, isLoggedIn, isLoggedIn_session, rank, rank_session, username} from "../data/constants";
 import {inventorynfo, producedchemicals, trackfo} from "../data";
 import Dashboard from "./Dashboard";
 import {TbInfoHexagon, TbPointFilled} from "react-icons/tb";
@@ -88,7 +88,7 @@ const TrackOrderRawMaterials = () => {
         const ordertime = new Date();
         // const finishtime = new Date(ordertime.getTime() + randomTimeInterval * 1000); // Adding milliseconds
         try {
-            const response = await axios.post('http://localhost:8085/neworderforrawmaterials', { // Make a POST request to the sign-up endpoint
+            const response = await axios.post(`http://${username}:8085/neworderforrawmaterials`, { // Make a POST request to the sign-up endpoint
                 rawmaterial_for: rawmaterial_for,
                 ordertoemail: orderedemail,
                 providerComp: providername,
@@ -115,7 +115,7 @@ const TrackOrderRawMaterials = () => {
     useEffect(() => {
         const fetchProviders = async () => {
             try {
-                let url = 'http://localhost:8085/rawmaterialproviderslist';
+                let url = `http://${username}:8085/rawmaterialproviderslist`;
                 const response = await axios.get(url);
                 setRawmaterialprovider(response.data);
             } catch (error) {
@@ -132,7 +132,7 @@ const TrackOrderRawMaterials = () => {
     useEffect(() => {
         const fetchRawMaterialReports = async () => {
             try {
-                let url = 'http://localhost:8085/getrawmaterials';
+                let url = `http://${username}:8085/getrawmaterials`;
                 const response = await axios.get(url);
                 setRawmaterialOrder(response.data);
             } catch (error) {

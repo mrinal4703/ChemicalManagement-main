@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import {isLoggedIn, isLoggedIn_session, rank, rank_session} from "../data/constants";
+import {isLoggedIn, isLoggedIn_session, rank, rank_session, username} from "../data/constants";
 import Dashboard from "./Dashboard";
 import {TbInfoHexagon, TbPointFilled} from "react-icons/tb";
 import {assessnfo, concl, Persistence, PhExplanation, Toxicity, Volatility} from "../data";
@@ -42,7 +42,7 @@ const AssessProduction = () => {
 
     const [chemicalsList, setChemicalsList] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:8085/getAllChemicals')
+        axios.get(`http://${username}:8085/getAllChemicals`)
             .then(response => {
                 setChemicalsList(response.data);
             })
@@ -111,8 +111,8 @@ const AssessProduction = () => {
             persistence: persistence
         };
         try {
-            const response = await axios.put(`http://localhost:8085/updateChemical/${chemicalId}`, updatedChemical);
-            const response1 = await axios.put(`http://localhost:8085/updateChemicalReport/${chemicalId}`, updatedChemical1);
+            const response = await axios.put(`http://${username}:8085/updateChemical/${chemicalId}`, updatedChemical);
+            const response1 = await axios.put(`http://${username}:8085/updateChemicalReport/${chemicalId}`, updatedChemical1);
             console.log(response);
             console.log(response1);
             window.location.reload();

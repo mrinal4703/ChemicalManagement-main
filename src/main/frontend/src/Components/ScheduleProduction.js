@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Modal from "react-modal";
 import {IoClose} from "react-icons/io5";
 import axios from "axios";
-import {isLoggedIn, isLoggedIn_session, rank, rank_session} from "../data/constants";
+import {isLoggedIn, isLoggedIn_session, rank, rank_session, username} from "../data/constants";
 import Dashboard from "./Dashboard";
 import {TbInfoHexagon, TbPointFilled} from "react-icons/tb";
 import {schedfo} from "../data";
@@ -131,7 +131,7 @@ const ScheduleProduction = () => {
         const chemquant = quantity * (1 - percent);
         const assess = 'pending'
         try {
-            const response = await axios.post('http://localhost:8085/newchemicals', {
+            const response = await axios.post(`http://${username}:8085/newchemicals`, {
                 name: name,
                 production_date: productiondate,
                 quantity: quantity,
@@ -139,7 +139,7 @@ const ScheduleProduction = () => {
                 quantity_type: quanttype,
                 assess: assess
             });
-            const response1 = await axios.post('http://localhost:8085/newreport', {
+            const response1 = await axios.post(`http://${username}:8085/newreport`, {
                 name: name,
                 production_date: productiondate,
                 quantity_type: quanttype,
@@ -168,7 +168,7 @@ const ScheduleProduction = () => {
     useEffect(() => {
         const fetchProviders = async () => {
             try {
-                let url = 'http://localhost:8085/rawmaterialproviderslist';
+                let url = `http://${username}:8085/rawmaterialproviderslist`;
                 const response = await axios.get(url);
                 setRawmaterialprovider(response.data);
             } catch (error) {
@@ -182,7 +182,7 @@ const ScheduleProduction = () => {
     console.log(rawmaterialprovider);
 
     useEffect(() => {
-        axios.get('http://localhost:8085/getrawmaterials')
+        axios.get(`http://${username}:8085/getrawmaterials`)
             .then(response => {
                 setExisitingrawmaterials(response.data);
             })
@@ -193,7 +193,7 @@ const ScheduleProduction = () => {
 
     const [chemicalsList, setChemicalslist] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:8085/getAllChemicals')
+        axios.get(`http://${username}:8085/getAllChemicals`)
             .then(response => {
                 setChemicalslist(response.data);
             })
@@ -213,7 +213,7 @@ const ScheduleProduction = () => {
     useEffect(() => {
         const fetchRawMaterialReports = async () => {
             try {
-                let url = 'http://localhost:8085/getrawmaterials';
+                let url = `http://${username}:8085/getrawmaterials`;
                 const response = await axios.get(url);
                 setRawmaterialOrder(response.data);
             } catch (error) {

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import {username} from "../data/constants";
 
 const Login = ({ onToggleSignUp }) => {
     const [email, setEmail] = useState('');
@@ -14,7 +15,7 @@ const Login = ({ onToggleSignUp }) => {
         console.log("Password:", password);
 
         try {
-            const response = await axios.post('http://localhost:8085/login', {
+            const response = await axios.post(`http://${username}:8085/login`, {
                 email: email,
                 password: password
             });
@@ -113,7 +114,7 @@ const Login = ({ onToggleSignUp }) => {
 //         console.log("Password:", password);
 //
 //         try {
-//             const response = await axios.post('http://localhost:8085/newuser', { // Make a POST request to the sign-up endpoint
+//             const response = await axios.post(`http://${username}:8085/newuser`, { // Make a POST request to the sign-up endpoint
 //                 email: email,
 //                 name: name,
 //                 rankk: selectedRank,

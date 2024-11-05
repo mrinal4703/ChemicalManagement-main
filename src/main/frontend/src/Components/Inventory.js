@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {FaRegFilePdf} from "react-icons/fa6";
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {username} from "../data/constants";
 
 const Inventory = () => {
     const [chemicalReports, setChemicalReports] = useState([]);
@@ -10,7 +11,7 @@ const Inventory = () => {
     useEffect(() => {
         const fetchChemicalReports = async () => {
             try {
-                let url = 'http://localhost:8085/chemical-reports';
+                let url = `http://${username}:8085/chemical-reports`;
                 if (selectedCategory !== 'all') {
                     url += `/${selectedCategory}`;
                 }

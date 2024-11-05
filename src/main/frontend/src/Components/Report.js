@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import jsPDF from 'jspdf';
 import axios from 'axios';
+import {username} from "../data/constants";
 
 const Report = () => {
     const {id} = useParams();
@@ -10,7 +11,7 @@ const Report = () => {
     useEffect(() => {
         const fetchChemicalReport = async () => {
             try {
-                const response = await axios.get(`http://localhost:8085/getreport/${id}`);
+                const response = await axios.get(`http://${username}:8085/getreport/${id}`);
                 console.log('API Response:', response.data); // Log API response
                 setChemicalReport1(response.data);
                 const pdf = new jsPDF();

@@ -7,7 +7,7 @@ import Modal from "react-modal";
 import {assess, orders} from "../Assets/images";
 import {CiDeliveryTruck} from "react-icons/ci";
 import Dashboard from "./Dashboard";
-import {isLoggedIn, isLoggedIn_session, rank, rank_session} from "../data/constants";
+import {isLoggedIn, isLoggedIn_session, rank, rank_session, username} from "../data/constants";
 import {TbInfoHexagon, TbPointFilled} from "react-icons/tb";
 
 const Sidebar = ({ isOpen, onClose }) => {
@@ -39,7 +39,7 @@ function ChemicalDeliveryCard({delivery, producedchemicals}) {
     useEffect(() => {
         const fetchOrders1 = async () => {
             try {
-                const url = `http://localhost:8085/chemical-reports`;
+                const url = `http://${username}:8085/chemical-reports`;
                 const response = await axios.get(url);
                 setChemlist(response.data);
                 console.log(response)
@@ -64,7 +64,7 @@ function ChemicalDeliveryCard({delivery, producedchemicals}) {
 
     const [chemlst, setCchemlst] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:8085/getcompanyorders')
+        axios.get(`http://${username}:8085/getcompanyorders`)
             .then(response => {
                 setChemlist(response.data);
             })
@@ -84,11 +84,11 @@ function ChemicalDeliveryCard({delivery, producedchemicals}) {
                 quantity: parseFloat(quantity)
             }));
 
-            await axios.put('http://localhost:8085/updateChemicalReportQuantities', updates);
+            await axios.put(`http://${username}:8085/updateChemicalReportQuantities`, updates);
 
             const companyOrderToUpdate = chemlst.find(deliver => deliver.company_email === emaill);
             const updatedDeli = {...companyOrderToUpdate, order_status: pend, delivered_date: deliverDate};
-            await axios.put(`http://localhost:8085/updateDelivery/${emaill}`, updatedDeli);
+            await axios.put(`http://${username}:8085/updateDelivery/${emaill}`, updatedDeli);
 
             setChemicals([{name: '', quantity: ''}]);
             window.location.reload();
@@ -266,9 +266,9 @@ const CompanyOrders = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                let url = `http://localhost:8085/getreport/all`;
+                let url = `http://${username}:8085/getreport/all`;
                 const response = await axios.get(url);
-                let url1 = `http://localhost:8085/getreport/count`;
+                let url1 = `http://${username}:8085/getreport/count`;
                 const response1 = await axios.get(url1);
                 setOrdersstack(response.data);
                 setOrdersstackCount(response1.data);
@@ -286,7 +286,7 @@ const CompanyOrders = () => {
     useEffect(() => {
         const fetchOrders1 = async () => {
             try {
-                let url = `http://localhost:8085/getcompanyorders`;
+                let url = `http://${username}:8085/getcompanyorders`;
                 const response = await axios.get(url);
                 setOrderStack1(response.data);
                 console.log(response)
@@ -304,7 +304,7 @@ const CompanyOrders = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:8085/generatedelivery', {
+            const response = await axios.post(`http://${username}:8085/generatedelivery`, {
                 company_email: maill
             });
             closeModal();
@@ -325,10 +325,10 @@ const CompanyOrders = () => {
     useEffect(() => {
         const fetchDelivery = async () => {
             try {
-                let url = 'http://localhost:8085/getdeliveryforcards';
+                let url = `http://${username}:8085/getdeliveryforcards`;
                 const response = await axios.get(url);
                 setDeliveryStack(response.data);
-                let url1 = 'http://localhost:8085/getdeliveryforcardsstatus';
+                let url1 = `http://${username}:8085/getdeliveryforcardsstatus`;
                 const response1 = await axios.get(url1);
                 setStatuss(response1.data);
                 console.log(response);

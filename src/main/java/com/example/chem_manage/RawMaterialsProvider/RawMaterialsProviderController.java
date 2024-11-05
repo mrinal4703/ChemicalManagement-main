@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin("https://localhost:3000")
+//@CrossOrigin("https://localhost:3000")
 public class RawMaterialsProviderController {
     private RawMaterialsProviderRepository rawMaterialsProviderRepository;
     private RawMaterialsProviderService rawMaterialsProviderService;

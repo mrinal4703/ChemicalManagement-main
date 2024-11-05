@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import {email, email_session, isLoggedIn, isLoggedIn_session} from "../data/constants";
+import {email, email_session, isLoggedIn, isLoggedIn_session, username} from "../data/constants";
 import {biodata, compfo, producedchemicals, rawbio, rawbio1, rawfo} from "../data";
 import {TbInfoHexagon, TbPointFilled} from "react-icons/tb";
 import {IoClose} from "react-icons/io5";
@@ -41,7 +41,7 @@ const RawMaterialProviderDashboard = () => {
     useEffect(() => {
         const fetchRawMaterialReports = async () => {
             try {
-                let url = 'http://localhost:8085/getrawmaterials';
+                let url = `http://${username}:8085/getrawmaterials`;
                 const response = await axios.get(url);
                 setRawmaterialOrder(response.data);
             } catch (error) {
@@ -58,7 +58,7 @@ const RawMaterialProviderDashboard = () => {
 
         const fetchProviders = async () => {
             try {
-                let url = 'http://localhost:8085/rawmaterialproviderslist';
+                let url = `http://${username}:8085/rawmaterialproviderslist`;
                 const response = await axios.get(url);
                 setRawmaterialprovider(response.data);
             } catch (error) {
@@ -75,7 +75,7 @@ const RawMaterialProviderDashboard = () => {
         event1.preventDefault();
         const ready = "Ready"; // Make sure 'ready' is not enclosed in quotes
         try {
-            const response = await axios.put(`http://localhost:8085/updatetrack/${reportId}?track=${ready}`);
+            const response = await axios.put(`http://${username}:8085/updatetrack/${reportId}?track=${ready}`);
             console.log(response);
             window.location.reload();
         } catch (error) {

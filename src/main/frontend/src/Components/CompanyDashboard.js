@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import {IoClose} from "react-icons/io5";
 import {biodata, compfo, producedchemicals} from "../data";
 import axios from "axios";
-import {email, email_session} from "../data/constants";
+import {email, email_session, username} from "../data/constants";
 import {TbInfoHexagon, TbPointFilled} from "react-icons/tb";
 
 const Sidebar = ({ isOpen, onClose }) => {
@@ -142,7 +142,7 @@ const CompanyDashboard = () => {
         const ordertime = new Date();
         const orderList = chemicals.map(({name, quantity}) => `${name} (${quantity})`).join(' Kg, ') + ' Kg';
         try {
-            const response = await axios.post('http://localhost:8085/orderchemicals', {
+            const response = await axios.post(`http://${username}:8085/orderchemicals`, {
                 company_email: email1,
                 order_date: ordertime,
                 order_list: orderList,
@@ -163,7 +163,7 @@ const CompanyDashboard = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                let url = 'http://localhost:8085/getcompanyorders';
+                let url = `http://${username}:8085/getcompanyorders`;
                 const response = await axios.get(url);
                 setOrdersstack(response.data);
             } catch (error) {

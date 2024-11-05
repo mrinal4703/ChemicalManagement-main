@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 @RestController
-@CrossOrigin("https://localhost:3000")
+//@CrossOrigin("https://localhost:3000")
 public class CompanyOrdersController {
     private CompanyOrdersRepository companyOrdersRepository;
     @Autowired

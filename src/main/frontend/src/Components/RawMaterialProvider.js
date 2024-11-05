@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios'; // Import Axios library
 import { useNavigate } from 'react-router-dom';
 import {producedchemicals} from "../data";
+import {username} from "../data/constants";
 
 const Login = ({ onToggleSignUp }) => {
     const [email, setEmail] = useState('');
@@ -14,7 +15,7 @@ const Login = ({ onToggleSignUp }) => {
         console.log("Password:", password);
 
         try {
-            const response = await axios.post('http://localhost:8085/login', {
+            const response = await axios.post(`http://${username}:8085/login`, {
                 email: email,
                 password: password
             });
@@ -134,7 +135,7 @@ const SignUp = ({onToggleLoginPage}) => {
         rankk = 'Raw materials provider'
         const selectedChemicalsString = selectedChemicals.join(', ');
         try {
-            const response = await axios.post('http://localhost:8085/newprovidersignup', { // Make a POST request to the sign-up endpoint
+            const response = await axios.post(`http://${username}:8085/newprovidersignup`, { // Make a POST request to the sign-up endpoint
                 provideremail: email,
                 providername:  name,
                 providerComp: compname,
@@ -143,7 +144,7 @@ const SignUp = ({onToggleLoginPage}) => {
                 password: password
             });
             console.log(response.data);
-            const response1 = await axios.post('http://localhost:8085/newuser',{
+            const response1 = await axios.post(`http://${username}:8085/newuser`,{
                 email: email,
                 name: name,
                 rankk: rankk,
