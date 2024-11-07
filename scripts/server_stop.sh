@@ -1,2 +1,2 @@
-#!/usr/bin/env bash
-echo "app stopped"
+#!/bin/bash
+sudo pkill -f 'java -jar'
