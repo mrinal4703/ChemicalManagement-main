@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 cd /home/ec2-user/Target
-sudo java -jar -Dserver.port=80 \
-    *.jar > /dev/null 2> /dev/null < /dev/null &
+sudo java -jar chem_manage-0.0.1-SNAPSHOT.jar
