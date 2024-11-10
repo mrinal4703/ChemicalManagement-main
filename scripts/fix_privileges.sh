@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-chmod +x /home/ubuntu/Target/*.war
-chmod +x /home/ubuntu/Target/server_start.sh
-chmod +x /home/ubuntu/Target/server_stop.sh
+chmod +x /home/ec2-user/Target/*.war
+chmod +x /home/ec2-user/Target/server_start.sh
+chmod +x /home/ec2-user/Target/server_stop.sh
