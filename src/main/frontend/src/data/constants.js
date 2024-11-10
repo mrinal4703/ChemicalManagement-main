@@ -6,4 +6,4 @@ export const email_session = sessionStorage.getItem('loggedinuseremail') || '';
 
 export const rank = localStorage.getItem('loggedinuserrank') || '';
 export const rank_session = sessionStorage.getItem('loggedinuserrank') || '';
-export const username = 'Seemsan-alb-1674927946.ap-south-1.elb.amazonaws.com';
+export const username = 'Seemsan-alb-209984179.ap-south-1.elb.amazonaws.com';
