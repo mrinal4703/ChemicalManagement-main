@@ -15,7 +15,7 @@ const Login = ({ onToggleSignUp }) => {
         console.log("Password:", password);
 
         try {
-            const response = await axios.post(`http://${username}:8085/login`, {
+            const response = await axios.post(`http://${username}/login`, {
                 email: email,
                 password: password
             });
@@ -135,7 +135,7 @@ const SignUp = ({onToggleLoginPage}) => {
         rankk = 'Raw materials provider'
         const selectedChemicalsString = selectedChemicals.join(', ');
         try {
-            const response = await axios.post(`http://${username}:8085/newprovidersignup`, { // Make a POST request to the sign-up endpoint
+            const response = await axios.post(`http://${username}/newprovidersignup`, { // Make a POST request to the sign-up endpoint
                 provideremail: email,
                 providername:  name,
                 providerComp: compname,
@@ -144,7 +144,7 @@ const SignUp = ({onToggleLoginPage}) => {
                 password: password
             });
             console.log(response.data);
-            const response1 = await axios.post(`http://${username}:8085/newuser`,{
+            const response1 = await axios.post(`http://${username}/newuser`,{
                 email: email,
                 name: name,
                 rankk: rankk,

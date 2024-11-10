@@ -88,7 +88,7 @@ const TrackOrderRawMaterials = () => {
         const ordertime = new Date();
         // const finishtime = new Date(ordertime.getTime() + randomTimeInterval * 1000); // Adding milliseconds
         try {
-            const response = await axios.post(`http://${username}:8085/neworderforrawmaterials`, { // Make a POST request to the sign-up endpoint
+            const response = await axios.post(`http://${username}/neworderforrawmaterials`, { // Make a POST request to the sign-up endpoint
                 rawmaterial_for: rawmaterial_for,
                 ordertoemail: orderedemail,
                 providerComp: providername,
@@ -115,7 +115,7 @@ const TrackOrderRawMaterials = () => {
     useEffect(() => {
         const fetchProviders = async () => {
             try {
-                let url = `http://${username}:8085/rawmaterialproviderslist`;
+                let url = `http://${username}/rawmaterialproviderslist`;
                 const response = await axios.get(url);
                 setRawmaterialprovider(response.data);
             } catch (error) {
@@ -132,7 +132,7 @@ const TrackOrderRawMaterials = () => {
     useEffect(() => {
         const fetchRawMaterialReports = async () => {
             try {
-                let url = `http://${username}:8085/getrawmaterials`;
+                let url = `http://${username}/getrawmaterials`;
                 const response = await axios.get(url);
                 setRawmaterialOrder(response.data);
             } catch (error) {

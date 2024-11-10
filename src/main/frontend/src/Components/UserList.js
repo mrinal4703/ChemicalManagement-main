@@ -12,7 +12,7 @@ const UserList = () => {
 
     const fetchData = async (api) => {
         try {
-            const response = await axios.get(`http://${username}:8085/${api}`); // Use Axios's get method
+            const response = await axios.get(`http://${username}/${api}`); // Use Axios's get method
             setUsers(response.data);
         } catch (error) {
             console.error('Error fetching data:', error);

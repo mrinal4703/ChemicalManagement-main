@@ -16,7 +16,7 @@ const Login = ({ onToggleSignUp }) => {
         console.log("Password:", password);
 
         try {
-            const response = await axios.post(`http://${username}:8085/login`, {
+            const response = await axios.post(`http://${username}/login`, {
                 email: email,
                 password: password
             });
@@ -132,13 +132,13 @@ const SignUp = ({onToggleLoginPage}) => {
         rankk = 'Company';
         let orders=0;
         try {
-            const response = await axios.post(`http://${username}:8085/newuser`, { // Make a POST request to the sign-up endpoint
+            const response = await axios.post(`http://${username}/newuser`, { // Make a POST request to the sign-up endpoint
                 email: email,
                 name: name,
                 rankk: rankk,
                 password: password
             });
-            const response1 = await axios.post(`http://${username}:8085/newcompanysignup`, { // Make a POST request to the sign-up endpoint
+            const response1 = await axios.post(`http://${username}/newcompanysignup`, { // Make a POST request to the sign-up endpoint
                 company_email: email,
                 company_name:  compname,
                 manage_name: name,

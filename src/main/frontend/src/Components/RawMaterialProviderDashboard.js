@@ -41,7 +41,7 @@ const RawMaterialProviderDashboard = () => {
     useEffect(() => {
         const fetchRawMaterialReports = async () => {
             try {
-                let url = `http://${username}:8085/getrawmaterials`;
+                let url = `http://${username}/getrawmaterials`;
                 const response = await axios.get(url);
                 setRawmaterialOrder(response.data);
             } catch (error) {
@@ -58,7 +58,7 @@ const RawMaterialProviderDashboard = () => {
 
         const fetchProviders = async () => {
             try {
-                let url = `http://${username}:8085/rawmaterialproviderslist`;
+                let url = `http://${username}/rawmaterialproviderslist`;
                 const response = await axios.get(url);
                 setRawmaterialprovider(response.data);
             } catch (error) {
@@ -75,7 +75,7 @@ const RawMaterialProviderDashboard = () => {
         event1.preventDefault();
         const ready = "Ready"; // Make sure 'ready' is not enclosed in quotes
         try {
-            const response = await axios.put(`http://${username}:8085/updatetrack/${reportId}?track=${ready}`);
+            const response = await axios.put(`http://${username}/updatetrack/${reportId}?track=${ready}`);
             console.log(response);
             window.location.reload();
         } catch (error) {

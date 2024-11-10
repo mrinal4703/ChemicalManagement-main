@@ -11,7 +11,7 @@ const Inventory = () => {
     useEffect(() => {
         const fetchChemicalReports = async () => {
             try {
-                let url = `http://${username}:8085/chemical-reports`;
+                let url = `http://${username}/chemical-reports`;
                 if (selectedCategory !== 'all') {
                     url += `/${selectedCategory}`;
                 }

@@ -142,7 +142,7 @@ const CompanyDashboard = () => {
         const ordertime = new Date();
         const orderList = chemicals.map(({name, quantity}) => `${name} (${quantity})`).join(' Kg, ') + ' Kg';
         try {
-            const response = await axios.post(`http://${username}:8085/orderchemicals`, {
+            const response = await axios.post(`http://${username}/orderchemicals`, {
                 company_email: email1,
                 order_date: ordertime,
                 order_list: orderList,
@@ -163,7 +163,7 @@ const CompanyDashboard = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                let url = `http://${username}:8085/getcompanyorders`;
+                let url = `http://${username}/getcompanyorders`;
                 const response = await axios.get(url);
                 setOrdersstack(response.data);
             } catch (error) {

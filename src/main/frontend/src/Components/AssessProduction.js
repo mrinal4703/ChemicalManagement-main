@@ -42,7 +42,7 @@ const AssessProduction = () => {
 
     const [chemicalsList, setChemicalsList] = useState([]);
     useEffect(() => {
-        axios.get(`http://${username}:8085/getAllChemicals`)
+        axios.get(`http://${username}/getAllChemicals`)
             .then(response => {
                 setChemicalsList(response.data);
             })
@@ -111,8 +111,8 @@ const AssessProduction = () => {
             persistence: persistence
         };
         try {
-            const response = await axios.put(`http://${username}:8085/updateChemical/${chemicalId}`, updatedChemical);
-            const response1 = await axios.put(`http://${username}:8085/updateChemicalReport/${chemicalId}`, updatedChemical1);
+            const response = await axios.put(`http://${username}/updateChemical/${chemicalId}`, updatedChemical);
+            const response1 = await axios.put(`http://${username}/updateChemicalReport/${chemicalId}`, updatedChemical1);
             console.log(response);
             console.log(response1);
             window.location.reload();

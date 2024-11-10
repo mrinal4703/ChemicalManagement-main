@@ -131,7 +131,7 @@ const ScheduleProduction = () => {
         const chemquant = quantity * (1 - percent);
         const assess = 'pending'
         try {
-            const response = await axios.post(`http://${username}:8085/newchemicals`, {
+            const response = await axios.post(`http://${username}/newchemicals`, {
                 name: name,
                 production_date: productiondate,
                 quantity: quantity,
@@ -139,7 +139,7 @@ const ScheduleProduction = () => {
                 quantity_type: quanttype,
                 assess: assess
             });
-            const response1 = await axios.post(`http://${username}:8085/newreport`, {
+            const response1 = await axios.post(`http://${username}/newreport`, {
                 name: name,
                 production_date: productiondate,
                 quantity_type: quanttype,
@@ -168,7 +168,7 @@ const ScheduleProduction = () => {
     useEffect(() => {
         const fetchProviders = async () => {
             try {
-                let url = `http://${username}:8085/rawmaterialproviderslist`;
+                let url = `http://${username}/rawmaterialproviderslist`;
                 const response = await axios.get(url);
                 setRawmaterialprovider(response.data);
             } catch (error) {
@@ -182,7 +182,7 @@ const ScheduleProduction = () => {
     console.log(rawmaterialprovider);
 
     useEffect(() => {
-        axios.get(`http://${username}:8085/getrawmaterials`)
+        axios.get(`http://${username}/getrawmaterials`)
             .then(response => {
                 setExisitingrawmaterials(response.data);
             })
@@ -193,7 +193,7 @@ const ScheduleProduction = () => {
 
     const [chemicalsList, setChemicalslist] = useState([]);
     useEffect(() => {
-        axios.get(`http://${username}:8085/getAllChemicals`)
+        axios.get(`http://${username}/getAllChemicals`)
             .then(response => {
                 setChemicalslist(response.data);
             })
@@ -213,7 +213,7 @@ const ScheduleProduction = () => {
     useEffect(() => {
         const fetchRawMaterialReports = async () => {
             try {
-                let url = `http://${username}:8085/getrawmaterials`;
+                let url = `http://${username}/getrawmaterials`;
                 const response = await axios.get(url);
                 setRawmaterialOrder(response.data);
             } catch (error) {

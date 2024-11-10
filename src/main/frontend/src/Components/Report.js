@@ -11,7 +11,7 @@ const Report = () => {
     useEffect(() => {
         const fetchChemicalReport = async () => {
             try {
-                const response = await axios.get(`http://${username}:8085/getreport/${id}`);
+                const response = await axios.get(`http://${username}/getreport/${id}`);
                 console.log('API Response:', response.data); // Log API response
                 setChemicalReport1(response.data);
                 const pdf = new jsPDF();

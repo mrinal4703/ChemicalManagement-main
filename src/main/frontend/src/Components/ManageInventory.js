@@ -96,7 +96,7 @@ const ManageInventory = ({onToggleManageInventory}) => {
                 }
             }
 
-            const response = await axios.post(`http://${username}:8085/newreport`, { // Make a POST request to the sign-up endpoint
+            const response = await axios.post(`http://${username}/newreport`, { // Make a POST request to the sign-up endpoint
                 name: name,
                 // chemcode: chemcode,
                 hazarduous: hazarduous,
@@ -121,7 +121,7 @@ const ManageInventory = ({onToggleManageInventory}) => {
     useEffect(() => {
         const fetchChemicalReports = async () => {
             try {
-                let url = `http://${username}:8085/chemical-reports`;
+                let url = `http://${username}/chemical-reports`;
                 if (selectedCategory !== 'all') {
                     url += `/${selectedCategory}`;
                 }
@@ -146,7 +146,7 @@ const ManageInventory = ({onToggleManageInventory}) => {
 
     const handleDownloadPDF = async (id) => {
         try {
-            const response = await axios.get(`http://${username}:8085/getreport/${id}`);
+            const response = await axios.get(`http://${username}/getreport/${id}`);
             const chemicalReport = response.data;
             let name = '';
 
@@ -176,7 +176,7 @@ const ManageInventory = ({onToggleManageInventory}) => {
 
     const handleDownloadPDF1 = async (id) => {
         try {
-            const response = await axios.get(`http://${username}:8085/getreport/${id}`);
+            const response = await axios.get(`http://${username}/getreport/${id}`);
             const chemicalReport = response.data;
             let name = '';
 
