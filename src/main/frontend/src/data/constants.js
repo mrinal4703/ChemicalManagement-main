@@ -5,5 +5,5 @@ export const email = localStorage.getItem('loggedinuseremail') || '';
 export const email_session = sessionStorage.getItem('loggedinuseremail') || '';
 export const rank = localStorage.getItem('loggedinuserrank') || '';
 export const rank_session = sessionStorage.getItem('loggedinuserrank') || '';
-export const username = 'Seemsan-alb-130034865.ap-south-1.elb.amazonaws.com';
+export const username = 'Seemsan-alb-1187044432.ap-south-1.elb.amazonaws.com';
 // export const username = 'localhost:8085';
